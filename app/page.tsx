@@ -1,44 +1,26 @@
-export default function Home() {
-  return (
-    <div>
-      <header style={{background:'#FFFFFF',color:'white',padding:'20px 40px',display:'flex',alignItems:'center',justifyContent:'space-between'}}>
-        <span style={{fontSize:'1.5rem',fontWeight:'bold'}}>Studio Pixel</span>
-        <nav style={{display:'flex',gap:'20px'}}>
-          <a href="#nav_sticky" style={{color:'white',textDecoration:'none'}}>nav_sticky</a>
-          <a href="#hero_centered" style={{color:'white',textDecoration:'none'}}>hero_centered</a>
-          <a href="#stats_banner" style={{color:'white',textDecoration:'none'}}>stats_banner</a>
-          <a href="#services_bento" style={{color:'white',textDecoration:'none'}}>services_bento</a>
-          <a href="#products_grid" style={{color:'white',textDecoration:'none'}}>products_grid</a>
-        </nav>
-      </header>
-      <section style={{background:'#FFFFFF',color:'white',padding:'100px 40px',textAlign:'center'}}>
-        <h1 style={{fontSize:'3rem',fontWeight:'800',marginBottom:'20px'}}>Studio Pixel</h1>
-        <p style={{fontSize:'1.2rem',opacity:0.85,maxWidth:'600px',margin:'0 auto 40px'}}>Landing page en español para Studio Pixel, una agencia creativa de Monterrey especializada en branding, diseño web, estrategia digital y fotografía de marca. La experiencia posiciona su trayectoria, metodología colaborativa y portafolio mediante una estética editorial, limpia y contemporánea.</p>
-        <a href="#contact" style={{background:'#2563EB',color:'white',padding:'16px 32px',borderRadius:'50px',textDecoration:'none',fontWeight:'bold',display:'inline-block'}}>Get In Touch</a>
-      </section>
-      <section id="nav_sticky" style={{padding:'80px 40px',textAlign:'center'}}>
-        <h2 style={{fontSize:'2rem',fontWeight:'700',marginBottom:'16px',color:'#FFFFFF'}}>nav_sticky</h2>
-        <p style={{color:'#666',maxWidth:'500px',margin:'0 auto'}}>Contact us to learn more about our nav_sticky offerings.</p>
-      </section>
-      <section id="hero_centered" style={{padding:'80px 40px',textAlign:'center'}}>
-        <h2 style={{fontSize:'2rem',fontWeight:'700',marginBottom:'16px',color:'#FFFFFF'}}>hero_centered</h2>
-        <p style={{color:'#666',maxWidth:'500px',margin:'0 auto'}}>Contact us to learn more about our hero_centered offerings.</p>
-      </section>
-      <section id="stats_banner" style={{padding:'80px 40px',textAlign:'center'}}>
-        <h2 style={{fontSize:'2rem',fontWeight:'700',marginBottom:'16px',color:'#FFFFFF'}}>stats_banner</h2>
-        <p style={{color:'#666',maxWidth:'500px',margin:'0 auto'}}>Contact us to learn more about our stats_banner offerings.</p>
-      </section>
-      <section id="services_bento" style={{padding:'80px 40px',textAlign:'center'}}>
-        <h2 style={{fontSize:'2rem',fontWeight:'700',marginBottom:'16px',color:'#FFFFFF'}}>services_bento</h2>
-        <p style={{color:'#666',maxWidth:'500px',margin:'0 auto'}}>Contact us to learn more about our services_bento offerings.</p>
-      </section>
-      <section id="products_grid" style={{padding:'80px 40px',textAlign:'center'}}>
-        <h2 style={{fontSize:'2rem',fontWeight:'700',marginBottom:'16px',color:'#FFFFFF'}}>products_grid</h2>
-        <p style={{color:'#666',maxWidth:'500px',margin:'0 auto'}}>Contact us to learn more about our products_grid offerings.</p>
-      </section>
-      <footer style={{background:'#FFFFFF',color:'white',padding:'30px',textAlign:'center'}}>
-        <p>Copyright 2026 Studio Pixel. All rights reserved.</p>
-      </footer>
-    </div>
-  );
-}
+import { ArrowRight, CircleUserRound, Globe2, Menu, Rocket, Share2, ShoppingBag, Sparkles, Target, UsersRound } from 'lucide-react'
+
+const services = [
+  ['01','Branding & Identidad','Construimos marcas con propósito, personalidad y valor diferencial.','brand','wide'],
+  ['02','Diseño Web & UX/UI','Diseñamos sitios web que convierten y ofrecen experiencias intuitivas.','web','wide'],
+  ['03','E-commerce & CRO','Tiendas online optimizadas para vender más y crecer de forma sostenible.','shop',''],
+  ['04','Estrategia Digital','Planificamos con datos, investigación y creatividad para lograr objetivos reales.','strategy',''],
+  ['05','Contenido & Dirección Creativa','Creamos narrativas visuales que comunican, conectan y construyen comunidad.','content',''],
+]
+const projects = [['Branding','Aurum Studio','Identidad visual para estudio de arquitectura de lujo.','aurum'],['Diseño Web','Vitae Health','Sitio web corporativo con foco en conversión y experiencia.','vitae'],['E-commerce','Skiné','Tienda online en Shopify para marca de skincare premium.','skine'],['Branding','Nórdika','Rebranding completo para marca de productos sustentables.','nordika'],['UX/UI','Fitway App','Diseño de app para entrenamiento con enfoque en usabilidad.','fitway']]
+
+export default function Home(){return <main>
+  <header className="nav wrap"><Logo/><nav><a href="#servicios">Servicios</a><a href="#proyectos">Proyectos</a><a href="#nosotros">Nosotros</a><a href="#blog">Blog</a><a href="#contacto">Contacto</a></nav><a className="button small" href="#contacto">Hablemos <ArrowRight size={15}/></a><Menu className="menu"/></header>
+  <section className="hero" id="inicio"><div className="orb a"/><div className="orb b"/><div className="orb c"/><div className="orb d"/><div className="hero-inner"><p className="eyebrow"><span/> Agencia creativa</p><h1>Diseñamos marcas<br/>que conectan.</h1><p>Estrategia, identidad y diseño digital para negocios<br/>que buscan destacar en un mundo en movimiento.</p><a href="#proyectos" className="button">Ver proyectos <ArrowRight size={18}/></a></div></section>
+  <section className="stats wrap"><Stat icon={<Sparkles/>} value="120+" text="Proyectos completados|para marcas ambiciosas"/><Stat icon={<UsersRound/>} value="8+" text="Años de experiencia|combinando estrategia y diseño"/><Stat icon={<Globe2/>} value="25+" text="Industrias acompañadas|en su transformación digital"/><Stat icon={<CircleUserRound/>} value="98%" text="Clientes que recomiendan|nuestro trabajo"/></section>
+  <section className="section services" id="servicios"><div className="wrap"><div className="section-head"><div><p className="kicker">Servicios</p><h2>Soluciones creativas<br/>de principio a fin</h2></div><p>Ofrecemos un enfoque integral que combina pensamiento<br/>estratégico y diseño para construir marcas relevantes<br/>y experiencias digitales memorables.</p></div><div className="service-grid">{services.map(([n,title,copy,art,size])=><article className={`service-card ${size}`} key={n}><div className="service-copy"><span>{n}</span><h3>{title}</h3><p>{copy}</p><ArrowRight size={22}/></div><ServiceArt type={art}/></article>)}</div></div></section>
+  <section className="section projects" id="proyectos"><div className="wrap"><div className="projects-head"><div><p className="kicker">Proyectos destacados</p><h2>Trabajo que habla<br/>por nosotros</h2></div><a href="#proyectos">Ver todos los proyectos <ArrowRight size={17}/></a></div><div className="project-grid">{projects.map(([kind,name,desc,art])=><article className="project" key={name}><div className={`project-art ${art}`}><ShoppingBag/><strong>{name.toUpperCase()}</strong></div><div className="project-copy"><span>{kind}</span><h3>{name}</h3><p>{desc}</p></div></article>)}</div></div></section>
+  <section className="process" id="nosotros"><div className="wrap process-grid"><div><p className="kicker">Nuestro proceso</p><h2>Un proceso claro,<br/>colaborativo y estratégico</h2></div><Step n="01" icon={<CircleUserRound/>} title="Descubrimos" text="Investigamos tu negocio, tu audiencia y el contexto para entender a fondo."/><Step n="02" icon={<Target/>} title="Estrategia" text="Definimos objetivos, posicionamiento y una hoja de ruta clara."/><Step n="03" icon={<Share2/>} title="Diseñamos" text="Creamos soluciones visuales y digitales que comunican y convierten."/><Step n="04" icon={<Rocket/>} title="Lanzamos" text="Implementamos, medimos y optimizamos para lograr resultados reales."/></div></section>
+  <section className="testimonials" id="blog"><div className="wrap testimonial-grid"><div><p className="kicker">Lo que dicen nuestros clientes</p><h2>Alianzas que<br/>generan resultados</h2></div><Quote initials="MS" text="Studio Pixel entendió perfectamente nuestra visión y la transformó en una marca sólida y coherente. El proceso fue claro, profesional y creativo." name="María José Sanhueza" role="Co-fundadora, Aurum Studio"/><Quote initials="CL" text="El nuevo sitio web no solo refleja quiénes somos, sino que también mejoró nuestras conversiones en más de un 40%. Altamente recomendados." name="Cristián López" role="CEO, Vitae Health"/></div></section>
+  <footer id="contacto"><div className="wrap footer-grid"><div><h2>¿Tienes un proyecto<br/>en mente?</h2><p>Hablemos sobre cómo podemos ayudarte<br/>a llevar tu marca al siguiente nivel.</p><a className="button small" href="mailto:hola@studiopixel.cl">Hablemos <ArrowRight size={14}/></a></div><div><h3>Suscríbete a nuestro newsletter</h3><p>Ideas, inspiración y recursos sobre branding,<br/>diseño y estrategia digital.</p><div className="subscribe"><span>Tu correo electrónico</span><b>→</b></div></div><div><h3>Navegación</h3><p>Servicios<br/>Proyectos<br/>Nosotros<br/>Blog<br/>Contacto</p></div><div><h3>Síguenos</h3><p>Instagram<br/>LinkedIn<br/>Behance<br/>Dribbble</p></div><div><Logo/><p>Agencia creativa de branding<br/>y diseño web.<br/><br/>hola@studiopixel.cl<br/>+56 9 1234 5678</p></div></div><div className="wrap legal">© 2026 Studio Pixel. Todos los derechos reservados.<span>Política de privacidad　 ·　 Términos y condiciones</span></div></footer>
+ </main>}
+function Logo(){return <a className="logo" href="#inicio"><span className="logo-mark"><i/><i/><i/></span>Studio Pixel</a>}
+function Stat({icon,value,text}:{icon:React.ReactNode,value:string,text:string}){return <div className="stat">{icon}<strong>{value}</strong><p>{text.split('|').map(x=><span key={x}>{x}<br/></span>)}</p></div>}
+function Step({n,icon,title,text}:{n:string,icon:React.ReactNode,title:string,text:string}){return <div className="step"><span>{n}</span>{icon}<h3>{title}</h3><p>{text}</p></div>}
+function ServiceArt({type}:{type:string}){return <div className={`service-art ${type}`}>{type==='strategy'?<div className="venn"><i/><i/><b>+</b></div>:type==='shop'?<><div className="bottle"/><div className="phone">NØRD<br/><small>shop</small></div></>:type==='web'?<div className="laptop"><div>Creamos experiencias<br/>que transforman</div></div>:type==='content'?<div className="book">NØRDIK<i/></div>:<><div className="stone"/><div className="brand-book">NØRDIK</div><div className="paper"/></>}</div>}
+function Quote({initials,text,name,role}:{initials:string,text:string,name:string,role:string}){return <article className="quote"><b>“</b><p>{text}</p><div><span>{initials}</span><small><strong>{name}</strong><br/>{role}</small></div></article>}
