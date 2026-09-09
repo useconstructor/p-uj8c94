@@ -1,26 +1,216 @@
-import { ArrowRight, CircleUserRound, Globe2, Menu, Rocket, Share2, ShoppingBag, Sparkles, Target, UsersRound } from 'lucide-react'
+'use client';
+import React, { useState } from 'react';
 
-const services = [
-  ['01','Branding & Identidad','Construimos marcas con propósito, personalidad y valor diferencial.','brand','wide'],
-  ['02','Diseño Web & UX/UI','Diseñamos sitios web que convierten y ofrecen experiencias intuitivas.','web','wide'],
-  ['03','E-commerce & CRO','Tiendas online optimizadas para vender más y crecer de forma sostenible.','shop',''],
-  ['04','Estrategia Digital','Planificamos con datos, investigación y creatividad para lograr objetivos reales.','strategy',''],
-  ['05','Contenido & Dirección Creativa','Creamos narrativas visuales que comunican, conectan y construyen comunidad.','content',''],
-]
-const projects = [['Branding','Aurum Studio','Identidad visual para estudio de arquitectura de lujo.','aurum'],['Diseño Web','Vitae Health','Sitio web corporativo con foco en conversión y experiencia.','vitae'],['E-commerce','Skiné','Tienda online en Shopify para marca de skincare premium.','skine'],['Branding','Nórdika','Rebranding completo para marca de productos sustentables.','nordika'],['UX/UI','Fitway App','Diseño de app para entrenamiento con enfoque en usabilidad.','fitway']]
+const SERVICES = [
+  {
+    num: '01',
+    name: 'Branding & Identidad',
+    tagline: 'Creamos la identidad visual completa de tu marca.',
+    detail: 'Incluye logo, paleta de colores, tipografías, manual de marca y guía de uso en todos los formatos para digital e impresión.',
+  },
+  {
+    num: '02',
+    name: 'Diseño Web',
+    tagline: 'Sitios web modernos, rápidos y con propósito.',
+    detail: 'Diseñamos con Next.js y Tailwind, optimizado para SEO y mobile. Incluye hasta 5 páginas, formulario de contacto y analytics básico.',
+  },
+  {
+    num: '03',
+    name: 'Estrategia Digital',
+    tagline: 'Posiciona tu marca donde están tus clientes.',
+    detail: 'Auditoría de presencia digital, plan de contenidos, estrategia SEO on-page y configuración de Google Business Profile.',
+  },
+  {
+    num: '04',
+    name: 'Fotografía de Marca',
+    tagline: 'Imágenes que comunican tu esencia.',
+    detail: 'Sesión fotográfica, edición profesional, entrega de 30 imágenes en alta resolución para web y redes.',
+  },
+];
 
-export default function Home(){return <main>
-  <header className="nav wrap"><Logo/><nav><a href="#servicios">Servicios</a><a href="#proyectos">Proyectos</a><a href="#nosotros">Nosotros</a><a href="#blog">Blog</a><a href="#contacto">Contacto</a></nav><a className="button small" href="#contacto">Hablemos <ArrowRight size={15}/></a><Menu className="menu"/></header>
-  <section className="hero" id="inicio"><div className="orb a"/><div className="orb b"/><div className="orb c"/><div className="orb d"/><div className="hero-inner"><p className="eyebrow"><span/> Agencia creativa</p><h1>Diseñamos marcas<br/>que conectan.</h1><p>Estrategia, identidad y diseño digital para negocios<br/>que buscan destacar en un mundo en movimiento.</p><a href="#proyectos" className="button">Ver proyectos <ArrowRight size={18}/></a></div></section>
-  <section className="stats wrap"><Stat icon={<Sparkles/>} value="120+" text="Proyectos completados|para marcas ambiciosas"/><Stat icon={<UsersRound/>} value="8+" text="Años de experiencia|combinando estrategia y diseño"/><Stat icon={<Globe2/>} value="25+" text="Industrias acompañadas|en su transformación digital"/><Stat icon={<CircleUserRound/>} value="98%" text="Clientes que recomiendan|nuestro trabajo"/></section>
-  <section className="section services" id="servicios"><div className="wrap"><div className="section-head"><div><p className="kicker">Servicios</p><h2>Soluciones creativas<br/>de principio a fin</h2></div><p>Ofrecemos un enfoque integral que combina pensamiento<br/>estratégico y diseño para construir marcas relevantes<br/>y experiencias digitales memorables.</p></div><div className="service-grid">{services.map(([n,title,copy,art,size])=><article className={`service-card ${size}`} key={n}><div className="service-copy"><span>{n}</span><h3>{title}</h3><p>{copy}</p><ArrowRight size={22}/></div><ServiceArt type={art}/></article>)}</div></div></section>
-  <section className="section projects" id="proyectos"><div className="wrap"><div className="projects-head"><div><p className="kicker">Proyectos destacados</p><h2>Trabajo que habla<br/>por nosotros</h2></div><a href="#proyectos">Ver todos los proyectos <ArrowRight size={17}/></a></div><div className="project-grid">{projects.map(([kind,name,desc,art])=><article className="project" key={name}><div className={`project-art ${art}`}><ShoppingBag/><strong>{name.toUpperCase()}</strong></div><div className="project-copy"><span>{kind}</span><h3>{name}</h3><p>{desc}</p></div></article>)}</div></div></section>
-  <section className="process" id="nosotros"><div className="wrap process-grid"><div><p className="kicker">Nuestro proceso</p><h2>Un proceso claro,<br/>colaborativo y estratégico</h2></div><Step n="01" icon={<CircleUserRound/>} title="Descubrimos" text="Investigamos tu negocio, tu audiencia y el contexto para entender a fondo."/><Step n="02" icon={<Target/>} title="Estrategia" text="Definimos objetivos, posicionamiento y una hoja de ruta clara."/><Step n="03" icon={<Share2/>} title="Diseñamos" text="Creamos soluciones visuales y digitales que comunican y convierten."/><Step n="04" icon={<Rocket/>} title="Lanzamos" text="Implementamos, medimos y optimizamos para lograr resultados reales."/></div></section>
-  <section className="testimonials" id="blog"><div className="wrap testimonial-grid"><div><p className="kicker">Lo que dicen nuestros clientes</p><h2>Alianzas que<br/>generan resultados</h2></div><Quote initials="MS" text="Studio Pixel entendió perfectamente nuestra visión y la transformó en una marca sólida y coherente. El proceso fue claro, profesional y creativo." name="María José Sanhueza" role="Co-fundadora, Aurum Studio"/><Quote initials="CL" text="El nuevo sitio web no solo refleja quiénes somos, sino que también mejoró nuestras conversiones en más de un 40%. Altamente recomendados." name="Cristián López" role="CEO, Vitae Health"/></div></section>
-  <footer id="contacto"><div className="wrap footer-grid"><div><h2>¿Tienes un proyecto<br/>en mente?</h2><p>Hablemos sobre cómo podemos ayudarte<br/>a llevar tu marca al siguiente nivel.</p><a className="button small" href="mailto:hola@studiopixel.cl">Hablemos <ArrowRight size={14}/></a></div><div><h3>Suscríbete a nuestro newsletter</h3><p>Ideas, inspiración y recursos sobre branding,<br/>diseño y estrategia digital.</p><div className="subscribe"><span>Tu correo electrónico</span><b>→</b></div></div><div><h3>Navegación</h3><p>Servicios<br/>Proyectos<br/>Nosotros<br/>Blog<br/>Contacto</p></div><div><h3>Síguenos</h3><p>Instagram<br/>LinkedIn<br/>Behance<br/>Dribbble</p></div><div><Logo/><p>Agencia creativa de branding<br/>y diseño web.<br/><br/>hola@studiopixel.cl<br/>+56 9 1234 5678</p></div></div><div className="wrap legal">© 2026 Studio Pixel. Todos los derechos reservados.<span>Política de privacidad　 ·　 Términos y condiciones</span></div></footer>
- </main>}
-function Logo(){return <a className="logo" href="#inicio"><span className="logo-mark"><i/><i/><i/></span>Studio Pixel</a>}
-function Stat({icon,value,text}:{icon:React.ReactNode,value:string,text:string}){return <div className="stat">{icon}<strong>{value}</strong><p>{text.split('|').map(x=><span key={x}>{x}<br/></span>)}</p></div>}
-function Step({n,icon,title,text}:{n:string,icon:React.ReactNode,title:string,text:string}){return <div className="step"><span>{n}</span>{icon}<h3>{title}</h3><p>{text}</p></div>}
-function ServiceArt({type}:{type:string}){return <div className={`service-art ${type}`}>{type==='strategy'?<div className="venn"><i/><i/><b>+</b></div>:type==='shop'?<><div className="bottle"/><div className="phone">NØRD<br/><small>shop</small></div></>:type==='web'?<div className="laptop"><div>Creamos experiencias<br/>que transforman</div></div>:type==='content'?<div className="book">NØRDIK<i/></div>:<><div className="stone"/><div className="brand-book">NØRDIK</div><div className="paper"/></>}</div>}
-function Quote({initials,text,name,role}:{initials:string,text:string,name:string,role:string}){return <article className="quote"><b>“</b><p>{text}</p><div><span>{initials}</span><small><strong>{name}</strong><br/>{role}</small></div></article>}
+const PORTFOLIO = [
+  { name: 'Aurum Studio', cat: 'Branding', bg: 'linear-gradient(135deg,#1a1a2e,#16213e)' },
+  { name: 'Vitae Health', cat: 'Diseño Web', bg: 'linear-gradient(135deg,#0f3460,#533483)' },
+  { name: 'Skiné', cat: 'E-commerce', bg: 'linear-gradient(135deg,#e94560,#0f3460)' },
+  { name: 'Nórdika', cat: 'Branding', bg: 'linear-gradient(135deg,#2d6a4f,#1b4332)' },
+  { name: 'Fitway App', cat: 'UX/UI', bg: 'linear-gradient(135deg,#f77f00,#d62828)' },
+  { name: 'Luna Café', cat: 'Identidad', bg: 'linear-gradient(135deg,#3d405b,#81b29a)' },
+];
+
+export default function Page() {
+  const [expanded, setExpanded] = useState<Record<number, boolean>>({});
+  const [form, setForm] = useState({ nombre: '', email: '', tipo: '', descripcion: '', presupuesto: '' });
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const toggle = (i: number) => setExpanded(p => ({ ...p, [i]: !p[i] }));
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      await fetch(
+        `${process.env.NEXT_PUBLIC_CONSTRUCTOR_API}/v1/forms/${process.env.NEXT_PUBLIC_PROJECT_ID}`,
+        { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(form) }
+      );
+      setSubmitted(true);
+    } catch {}
+    setLoading(false);
+  };
+
+  const accent = '#2563eb';
+  const inp: React.CSSProperties = { width: '100%', border: '1px solid #d1d5db', borderRadius: '0.5rem', padding: '0.75rem 1rem', fontSize: '1rem', boxSizing: 'border-box', background: '#fff', color: '#111' };
+  const lbl: React.CSSProperties = { display: 'block', color: '#374151', marginBottom: '0.375rem', fontSize: '0.875rem', fontWeight: 600 };
+
+  return (
+    <div style={{ fontFamily: 'system-ui,sans-serif', background: '#fff', color: '#111', minHeight: '100vh' }}>
+
+      {/* NAV */}
+      <nav style={{ position: 'sticky', top: 0, zIndex: 50, background: '#fff', borderBottom: '1px solid #e5e7eb', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '1rem 2rem' }}>
+        <span style={{ fontWeight: 900, fontSize: '1.25rem', letterSpacing: '-0.02em' }}>
+          <span style={{ color: accent }}>■</span> Studio Pixel
+        </span>
+        <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
+          {[['Servicios','#servicios'],['Portafolio','#portafolio'],['Nosotros','#nosotros'],['Contacto','#contacto']].map(([label,href]) => (
+            <a key={href} href={href} style={{ color: '#374151', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 500 }}>{label}</a>
+          ))}
+          <a href="#contacto" style={{ background: accent, color: '#fff', padding: '0.5rem 1.25rem', borderRadius: '0.5rem', textDecoration: 'none', fontWeight: 700, fontSize: '0.9rem' }}>Iniciar proyecto</a>
+        </div>
+      </nav>
+
+      {/* HERO */}
+      <section style={{ textAlign: 'center', padding: '6rem 2rem 5rem', background: 'radial-gradient(ellipse at 50% 0%,#eff6ff 0%,#fff 70%)' }}>
+        <div style={{ display: 'inline-block', background: '#eff6ff', color: accent, padding: '0.375rem 1rem', borderRadius: '9999px', fontSize: '0.8rem', fontWeight: 700, marginBottom: '1.5rem', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Agencia Creativa</div>
+        <h1 style={{ fontSize: 'clamp(2.25rem,5vw,4rem)', fontWeight: 900, lineHeight: 1.1, marginBottom: '1.5rem', letterSpacing: '-0.03em' }}>
+          Diseñamos marcas<br/>que se recuerdan
+        </h1>
+        <p style={{ color: '#6b7280', maxWidth: '520px', margin: '0 auto 2.5rem', lineHeight: 1.7, fontSize: '1.1rem' }}>
+          Branding, diseño web y estrategia digital para empresas con personalidad.
+        </p>
+        <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+          <a href="#portafolio" style={{ background: accent, color: '#fff', padding: '0.875rem 2rem', borderRadius: '0.5rem', textDecoration: 'none', fontWeight: 700 }}>Ver portafolio</a>
+          <a href="#contacto" style={{ border: '2px solid #d1d5db', color: '#111', padding: '0.875rem 2rem', borderRadius: '0.5rem', textDecoration: 'none', fontWeight: 700 }}>Iniciar proyecto</a>
+        </div>
+      </section>
+
+      {/* SERVICES */}
+      <section id="servicios" style={{ padding: '5rem 2rem', background: '#f9fafb' }}>
+        <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+          <p style={{ color: accent, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '0.8rem', marginBottom: '0.75rem' }}>Servicios</p>
+          <h2 style={{ fontSize: '2.5rem', fontWeight: 900, marginBottom: '3rem', letterSpacing: '-0.02em' }}>Lo que hacemos</h2>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(380px,1fr))', gap: '1.25rem' }}>
+            {SERVICES.map((s, i) => (
+              <div key={i} style={{ background: '#fff', border: '1px solid #e5e7eb', borderRadius: '1rem', padding: '1.75rem', transition: 'box-shadow 0.2s' }}>
+                <div style={{ color: accent, fontWeight: 900, fontSize: '0.8rem', letterSpacing: '0.1em', marginBottom: '0.75rem' }}>{s.num}</div>
+                <h3 style={{ fontWeight: 800, fontSize: '1.2rem', marginBottom: '0.5rem' }}>{s.name}</h3>
+                <p style={{ color: '#6b7280', lineHeight: 1.6, marginBottom: '1rem' }}>{s.tagline}</p>
+                {expanded[i] && (
+                  <p style={{ color: '#374151', lineHeight: 1.7, marginBottom: '1rem', background: '#eff6ff', padding: '0.875rem', borderRadius: '0.5rem', fontSize: '0.95rem' }}>
+                    {s.detail}
+                  </p>
+                )}
+                <button
+                  onClick={() => toggle(i)}
+                  style={{ background: 'transparent', border: `1px solid ${accent}`, color: accent, padding: '0.375rem 0.875rem', borderRadius: '0.375rem', cursor: 'pointer', fontWeight: 600, fontSize: '0.875rem' }}
+                >
+                  {expanded[i] ? 'Ver menos' : 'Saber más'}
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PORTFOLIO */}
+      <section id="portafolio" style={{ padding: '5rem 2rem' }}>
+        <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+          <p style={{ color: accent, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '0.8rem', marginBottom: '0.75rem' }}>Proyectos Destacados</p>
+          <h2 style={{ fontSize: '2.5rem', fontWeight: 900, marginBottom: '3rem', letterSpacing: '-0.02em' }}>Proyectos recientes</h2>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(300px,1fr))', gap: '1.25rem' }}>
+            {PORTFOLIO.map(p => (
+              <div key={p.name} style={{ borderRadius: '1rem', overflow: 'hidden', border: '1px solid #e5e7eb' }}>
+                <div style={{ height: 180, background: p.bg, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <span style={{ color: '#fff', fontWeight: 900, fontSize: '1.5rem', opacity: 0.9 }}>{p.name}</span>
+                </div>
+                <div style={{ padding: '1.25rem' }}>
+                  <span style={{ background: '#eff6ff', color: accent, padding: '0.25rem 0.75rem', borderRadius: '9999px', fontSize: '0.75rem', fontWeight: 700 }}>{p.cat}</span>
+                  <h3 style={{ fontWeight: 800, marginTop: '0.75rem', marginBottom: 0 }}>{p.name}</h3>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ABOUT */}
+      <section id="nosotros" style={{ padding: '5rem 2rem', background: '#f9fafb' }}>
+        <div style={{ maxWidth: '900px', margin: '0 auto', textAlign: 'center' }}>
+          <p style={{ color: accent, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '0.8rem', marginBottom: '0.75rem' }}>Nosotros</p>
+          <h2 style={{ fontSize: '2.5rem', fontWeight: 900, marginBottom: '3rem', letterSpacing: '-0.02em' }}>¿Por qué Studio Pixel?</h2>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(220px,1fr))', gap: '1.5rem' }}>
+            {[['5+ años','creando marcas'],['+ 80 proyectos','entregados'],['Clientes','en 4 países']].map(([v,l]) => (
+              <div key={l} style={{ background: '#fff', border: '1px solid #e5e7eb', borderRadius: '1rem', padding: '2rem', boxShadow: '0 1px 3px rgba(0,0,0,0.06)' }}>
+                <div style={{ fontSize: '2rem', fontWeight: 900, color: accent, marginBottom: '0.5rem' }}>{v}</div>
+                <div style={{ color: '#6b7280', fontWeight: 500 }}>{l}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CONTACT */}
+      <section id="contacto" style={{ padding: '5rem 2rem' }}>
+        <div style={{ maxWidth: '640px', margin: '0 auto' }}>
+          <p style={{ color: accent, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '0.8rem', marginBottom: '0.75rem' }}>Contacto</p>
+          <h2 style={{ fontSize: '2.5rem', fontWeight: 900, marginBottom: '2.5rem', letterSpacing: '-0.02em' }}>Hablemos de tu proyecto</h2>
+          {submitted ? (
+            <div style={{ background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '1rem', padding: '2.5rem', textAlign: 'center' }}>
+              <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>✓</div>
+              <h3 style={{ color: accent, margin: '0 0 0.5rem', fontSize: '1.5rem', fontWeight: 800 }}>Propuesta enviada</h3>
+              <p style={{ color: '#374151', margin: 0 }}>Te responderemos en 24 horas a tu email.</p>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+              <div><label style={lbl}>Nombre completo *</label><input type="text" required value={form.nombre} onChange={e => setForm(p => ({ ...p, nombre: e.target.value }))} style={inp} /></div>
+              <div><label style={lbl}>Email *</label><input type="email" required value={form.email} onChange={e => setForm(p => ({ ...p, email: e.target.value }))} style={inp} /></div>
+              <div>
+                <label style={lbl}>Tipo de proyecto</label>
+                <select value={form.tipo} onChange={e => setForm(p => ({ ...p, tipo: e.target.value }))} style={inp}>
+                  <option value="">Selecciona</option>
+                  {['Branding','Diseño web','Estrategia digital','Fotografía','Otro'].map(o => <option key={o}>{o}</option>)}
+                </select>
+              </div>
+              <div><label style={lbl}>Descripción del proyecto *</label><textarea required rows={4} value={form.descripcion} onChange={e => setForm(p => ({ ...p, descripcion: e.target.value }))} style={{ ...inp, resize: 'vertical' }} /></div>
+              <div>
+                <label style={lbl}>Presupuesto estimado</label>
+                <select value={form.presupuesto} onChange={e => setForm(p => ({ ...p, presupuesto: e.target.value }))} style={inp}>
+                  <option value="">Selecciona</option>
+                  {['Menos de $20k MXN','$20k–50k MXN','$50k–100k MXN','Más de $100k MXN'].map(o => <option key={o}>{o}</option>)}
+                </select>
+              </div>
+              <button type="submit" disabled={loading} style={{ background: loading ? '#93c5fd' : accent, color: '#fff', padding: '1rem', borderRadius: '0.5rem', fontWeight: 700, fontSize: '1rem', border: 'none', cursor: loading ? 'not-allowed' : 'pointer' }}>
+                {loading ? 'Enviando...' : 'Enviar propuesta'}
+              </button>
+            </form>
+          )}
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer style={{ background: '#111', color: '#9ca3af', padding: '3rem 2rem', textAlign: 'center' }}>
+        <div style={{ fontWeight: 900, color: '#fff', fontSize: '1.25rem', marginBottom: '1rem' }}>
+          <span style={{ color: accent }}>■</span> Studio Pixel
+        </div>
+        <div style={{ marginBottom: '1rem' }}>
+          <a href="mailto:hola@studiopixel.mx" style={{ color: '#9ca3af', textDecoration: 'none' }}>hola@studiopixel.mx</a>
+        </div>
+        <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', marginBottom: '1.5rem' }}>
+          {['IG','LI','BE','DR'].map(icon => (
+            <a key={icon} href="#" style={{ background: '#1f2937', color: '#9ca3af', width: 36, height: 36, borderRadius: '50%', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', textDecoration: 'none', fontSize: '0.75rem', fontWeight: 700 }}>{icon}</a>
+          ))}
+        </div>
+        <p style={{ fontSize: '0.875rem', margin: 0 }}>© 2026 Studio Pixel. Todos los derechos reservados.</p>
+      </footer>
+    </div>
+  );
+}
